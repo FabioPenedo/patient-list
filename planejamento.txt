@@ -1,0 +1,32 @@
+Desafio
+- Criar Usuário (Terá duas Permissões de Usuários > Comum e o Master)
+
+- Cada Usuário poderá incluir cadastrar pacientes
+
+- Cada Usuário poderá atualizar os dados do paciente 
+
+- Cada Usuário poderá apagar os dados do paciente 
+
+- Cada Usuário poderá incluir Evolução de Paciente
+
+- Cada Paciente terá 3 estágios: Cancelado, Renunciado, Ativo
+
+- Criar Filtro de Status dos Pacientes e Valor Total de Pacientes Cadastrados
+
+- Criar Filtro para Pesquisar pelo Status e Data de Evolução de Paciente
+
+- Criar Validação na Rota de DELETE, para apenas o "User Master" deletar pacientes
+
+_________________________________________________________________________________
+
+Desenvolver CRUD - Servidor (Node) e Banco de Dados (Mysql ou PostgreSQL) com às seguintes dependências:
+- Adonis ou Express
+- JWT
+- Prisma ou Sequelize ou Type ORM 
+- Typescript (Opcional)
+- Mysql ou PostgreSQL
+- Joi (Opcional com Adonis)
+- Celebrate (Opcional com Adonis)
+- Axios
+_________________________________________________________________________________
+
