@@ -1,15 +1,15 @@
 import { Request, Response } from 'express';
-import * as UserService from '../services/UserService';
+import * as UserService from '../services/EmployeesService';
 
 export const ping = (req: Request, res: Response) => {
     res.json({pong: true});
-}
+};
 
-export const register = async (req: Request, res: Response) => {
+export const registerEmployees = async (req: Request, res: Response) => {
     if(req.body.email && req.body.password) {
         let { email, password } = req.body;
 
-        const newUser = await UserService.createUser(email, password);
+        const newUser = await UserService.createEmployees(email, password);
 
         if(newUser instanceof Error) {
             res.json({ error: newUser.message });
@@ -22,9 +22,9 @@ export const register = async (req: Request, res: Response) => {
     }
 
     res.json({ error: 'E-mail e/ou senha não enviados.' });
-}
+};
 
-export const login = async (req: Request, res: Response) => {
+export const loginEmployees = async (req: Request, res: Response) => {
     if(req.body.email && req.body.password) {
         let email: string = req.body.email;
         let password: string = req.body.password;
@@ -38,15 +38,4 @@ export const login = async (req: Request, res: Response) => {
     }
 
     res.json({ status: false });
-}
-
-export const list = async (req: Request, res: Response) => {
-    let users = await UserService.all()
-    let list: string[] = [];
-
-    for(let i in users) {
-        list.push( users[i].email );
-    }
-
-    res.json({ list });
-}
+};

@@ -1,13 +1,14 @@
-import { User } from '../models/User';
+import { UserEmployees } from '../models/Employees';
 import bcrypt from 'bcrypt';
 
-export const createUser = async (email: string, password: string) => {
-    const hasUser = await User.findOne({where: { email } });
+export const createEmployees = async (email: string, password: string) => {
+    const hasUser = await UserEmployees.findOne({where: { email } });
     if(!hasUser){
         const hash = bcrypt.hashSync(password, 10);
-        const newUser = await User.create({
+        const newUser = await UserEmployees.create({
             email,
-            password: hash
+            password: hash,
+            usertype: 'ordinary'
         });
         return newUser;
     }else {
@@ -16,13 +17,9 @@ export const createUser = async (email: string, password: string) => {
 };
 
 export const findByEmail = async (email: string) => {
-    return await User.findOne({where: { email } });
+    return await UserEmployees.findOne({where: { email } });
 };
 
 export const matchPassword = async (passwordText: string, encrypted: string) => {
     return bcrypt.compare(passwordText, encrypted);
-};
-
-export const all = async () => {
-    return await User.findAll();
 };

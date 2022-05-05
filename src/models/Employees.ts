@@ -5,9 +5,10 @@ export interface UserInstance extends Model {
     id: number;
     email: string;
     password: string;
+    usertype: string;
 }
 
-export const User = sequelize.define<UserInstance>('User', {
+export const UserEmployees = sequelize.define<UserInstance>('UserEmployees', {
     id: {
         primaryKey: true,
         autoIncrement: true,
@@ -19,8 +20,11 @@ export const User = sequelize.define<UserInstance>('User', {
     },
     password: {
         type: DataTypes.STRING
+    },
+    usertype: {
+        type: DataTypes.STRING
     }
 }, {
-    tableName: 'users',
+    tableName: 'employees',
     timestamps: false
 });
