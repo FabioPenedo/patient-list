@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import * as UserService from '../services/EmployeesService';
+import { generateToken } from '../config/passport';
 
 export const ping = (req: Request, res: Response) => {
     res.json({pong: true});
@@ -32,7 +33,8 @@ export const loginEmployees = async (req: Request, res: Response) => {
         const user = await UserService.findByEmail(email);
 
         if(user && UserService.matchPassword(password, user.password)) {
-            res.json({ status: true });
+            const token = generateToken({id: user.id})
+            res.json({ status: true, token });
             return;
         }
     }

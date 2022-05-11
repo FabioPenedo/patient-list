@@ -10,11 +10,12 @@ export interface UserInstance extends Model {
     cpf: string;
     rg: string;
     cep: string;
+    gender: string;
     status: string;
     employeeid: number;
 }
 
-export const User = sequelize.define<UserInstance>('User', {
+export const UserPatients = sequelize.define<UserInstance>('User', {
     id: {
         primaryKey: true,
         autoIncrement: true,
