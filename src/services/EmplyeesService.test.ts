@@ -10,19 +10,19 @@ describe('testing employees service', () => {
         await UserEmployees.sync({ force: true })
     });
 
-    it('should create a new user', async () => {
+    it('should create a new employees', async () => {
         const newUser = await EmployeesService.createEmployees(email, password) as UserInstance;
         expect(newUser).not.toBeInstanceOf(Error);
         expect(newUser).toHaveProperty('id');
         expect(newUser.email).toBe(email)
     });
 
-    it('should not allow to create a user with existing email', async () => {
+    it('should not allow to create a employee with existing email', async () => {
         const newUser = await EmployeesService.createEmployees(email, password);
         expect(newUser).toBeInstanceOf(Error);
     });
 
-    it('should find a user by the email', async () => {
+    it('should find a employee by the email', async () => {
         const user = await EmployeesService.findByEmail(email) as UserInstance;
         expect(user.email).toBe(email)
     });

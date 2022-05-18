@@ -12,7 +12,6 @@ export interface UserInstance extends Model {
     cep: string;
     gender: string;
     status: string;
-    employeeid: number;
 }
 
 export const UserPatients = sequelize.define<UserInstance>('User', {
@@ -22,8 +21,7 @@ export const UserPatients = sequelize.define<UserInstance>('User', {
         type: DataTypes.INTEGER
     },
     patient: {
-        type: DataTypes.STRING,
-        unique: true
+        type: DataTypes.STRING
     },
     gender : {
         type: DataTypes.STRING,
@@ -38,19 +36,18 @@ export const UserPatients = sequelize.define<UserInstance>('User', {
         type: DataTypes.STRING
     },
     cpf: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     rg: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        unique: true
     },
     cep: {
         type: DataTypes.STRING
     },
     status: {
         type: DataTypes.STRING
-    },
-    employeeid: {
-        type: DataTypes.INTEGER
     }
 }, {
     tableName: 'patients',
