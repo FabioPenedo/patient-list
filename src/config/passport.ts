@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction} from 'express';
 import passport from "passport";
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 import { UserEmployees } from '../models/Employees';
 
@@ -20,7 +20,11 @@ passport.use(new JWTStrategy(options, async (payload, done) => {
 }));
 
 export const generateToken = (data: object) => {
-    return jwt.sign(data, process.env.JWT_SECRET as string, {expiresIn: '1h'});
+    return jwt.sign(data, process.env.JWT_SECRET as string);
+}
+
+export const decodeToken = (token: string) => {
+    return jwt.decode(token) as JwtPayload
 }
 
 export const privateRoute = (req: Request, res: Response, next: NextFunction) => {

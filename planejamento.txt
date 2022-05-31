@@ -1,9 +1,9 @@
 Desafio
-- Criar Usuário (Terá duas Permissões de Usuários > Comum e o Master)
+- Criar Usuário (Terá duas Permissões de Usuários > Comum e o Master) - OK
 
-- Cada Usuário poderá incluir cadastrar pacientes
+- Cada Usuário poderá incluir cadastrar pacientes - OK
 
-- Cada Usuário poderá atualizar os dados do paciente 
+- Cada Usuário poderá atualizar os dados do paciente - PROXIMO
 
 - Cada Usuário poderá apagar os dados do paciente 
 

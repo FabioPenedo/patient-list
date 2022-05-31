@@ -1,4 +1,4 @@
-import { UserPatients } from '../models/Patients';
+import { UserInstance, UserPatients } from '../models/Patients';
 
 export const registerPatient = async (patient: string, gender: string, clinic: string, age: string, city: string, cpf: string, rg: string, cep: string, status: string) => {
     const hasUser = await UserPatients.findOne({where: { cpf } });
@@ -19,3 +19,30 @@ export const registerPatient = async (patient: string, gender: string, clinic: s
         return new Error('Já existe um usuário com esse cpf cadastrado');
     }
 };
+
+export const all = async () => {
+    return await UserPatients.findAll();
+}
+
+export const thisPatient = async (id: string) => {
+    return await UserPatients.findByPk(id);
+}
+
+export const updateThisPatient = async (id: string, patient: string, gender: string, clinic: string, age: string, city: string, cpf: string, rg: string, cep: string, status: string) => {
+    const userResults = await UserPatients.findAll({where: {id}}) 
+    
+    if(userResults.length > 0) {
+        let userEdit = userResults[0]
+        userEdit.patient = patient
+        userEdit.gender = gender
+        userEdit.clinic = clinic
+        userEdit.age = age
+        userEdit.city = city
+        userEdit.cpf = cpf
+        userEdit.rg = rg
+        userEdit.cep = cep
+        userEdit.status = status
+        return await userEdit.save()
+    }
+    
+}

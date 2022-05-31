@@ -2,25 +2,33 @@ import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/pg';
 
 export interface UserInstance extends Model {
+    id: number;
     idemployees: number;
     idpatient: number;
     previousstatus: string;
     currentstatus: string;
-    datatime: number;
+    datatime: string;
 }
 
 export const StatusHistory = sequelize.define<UserInstance>('StatusHistory', {
-    idemployees: {
+    id: {
         primaryKey: true,
+        autoIncrement: true,
+        type: DataTypes.INTEGER
+    },
+    idemployees: {
         type: DataTypes.INTEGER
     },
     idpatient: {
         type: DataTypes.INTEGER
     },
-    password: {
+    previousstatus: {
         type: DataTypes.STRING
     },
-    usertype: {
+    currentstatus: {
+        type: DataTypes.STRING
+    },
+    datatime: {
         type: DataTypes.STRING
     }
 }, {
