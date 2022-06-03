@@ -21,5 +21,5 @@ export const findByEmail = async (email: string) => {
 };
 
 export const matchPassword = async (passwordText: string, encrypted: string) => {
-    return bcrypt.compare(passwordText, encrypted);
+    return bcrypt.compareSync(passwordText, encrypted);
 };

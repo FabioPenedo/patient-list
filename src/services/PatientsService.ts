@@ -24,11 +24,11 @@ export const all = async () => {
     return await UserPatients.findAll();
 }
 
-export const thisPatient = async (id: string) => {
-    return await UserPatients.findByPk(id);
+export const thisPatient = async (id: number) => {
+    return await UserPatients.findByPk(id);   
 }
 
-export const updateThisPatient = async (id: string, patient: string, gender: string, clinic: string, age: string, city: string, cpf: string, rg: string, cep: string, status: string) => {
+export const updateThisPatient = async (id: number, patient: string, gender: string, clinic: string, age: string, city: string, cpf: string, rg: string, cep: string, status: string) => {
     const userResults = await UserPatients.findAll({where: {id}}) 
     
     if(userResults.length > 0) {
@@ -44,5 +44,4 @@ export const updateThisPatient = async (id: string, patient: string, gender: str
         userEdit.status = status
         return await userEdit.save()
     }
-    
 }

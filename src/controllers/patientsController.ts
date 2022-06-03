@@ -30,35 +30,40 @@ export const listPatients = async (req: Request, res: Response) => {
 }
 
 export const patientX = async (req: Request, res: Response) => {
-    let id = req.params.id
-    let users = await PatientService.thisPatient(id)
+    let id = parseInt( req.params.id )
+    let users = await PatientService.thisPatient( id )
     res.json({ users });
 }
 
 export const updatePatients = async (req: Request, res: Response) => {
-    let id = req.params.id
-    let { patient, gender, clinic, age, city, cpf, rg, cep, status } = req.body;
-    let user = await PatientService.updateThisPatient(id, patient, gender, clinic, age, city, cpf, rg, cep, status)
-    res.json({ user })
+    let id = parseInt( req.params.id )
 
-    let token = req.headers.authorization as string
-    let separateToken = token.split(' ')
-    let decode = decodeToken(separateToken[1])
+    let patientX = await PatientService.thisPatient(id)
+    if(patientX) {
+        let previousStatus
+        
+        let { patient, gender, clinic, age, city, cpf, rg, cep, status } = req.body;
+        let user = await PatientService.updateThisPatient(id, patient, gender, clinic, age, city, cpf, rg, cep, status)
+        res.json({ user })
     
-    if(req.body.status) {
-        if(user) {
-            let patientX = await PatientService.thisPatient(id)
-            if(patientX) {
+        let token = req.headers.authorization as string
+        let separateToken = token.split(' ')
+        let decode = decodeToken(separateToken[1])
+        
+        if(req.body.status) {
+            if(user) {
                 let employeeId = decode.id
                 let patientId =  user.id
-                let previousStatus = patientX.status
+                previousStatus = patientX.status
                 let currentStatus = user.status
                 let now = new Date()
                 let dataTime = now.toLocaleString() 
     
                 await StatusHistory.employeeRegistration(employeeId, patientId, previousStatus, currentStatus, dataTime)
-    
             }
         }
+    } else {
+        res.json({ users: null })
     }
+     
 }

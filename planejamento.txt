@@ -3,19 +3,17 @@ Desafio
 
 - Cada Usuário poderá incluir cadastrar pacientes - OK
 
-- Cada Usuário poderá atualizar os dados do paciente - PROXIMO
+- Cada Usuário poderá atualizar os dados do paciente - OK
 
-- Cada Usuário poderá apagar os dados do paciente 
+- Cada Usuário poderá incluir Evolução de Paciente - OK
 
-- Cada Usuário poderá incluir Evolução de Paciente
-
-- Cada Paciente terá 3 estágios: Cancelado, Renunciado, Ativo
+- Cada Paciente terá 3 estágios: Cancelado, Renunciado, Ativo - OK
 
 - Criar Filtro de Status dos Pacientes e Valor Total de Pacientes Cadastrados
 
-- Criar Filtro para Pesquisar pelo Status e Data de Evolução de Paciente
+- Criar Filtro Data de Evolução de Paciente
 
-- Criar Validação na Rota de DELETE, para apenas o "User Master" deletar pacientes
+- Criar Validação na Rota de DELETE, para apenas o "User Master" deletar pacientes - PROXIMO
 
 _________________________________________________________________________________
 

@@ -32,12 +32,14 @@ export const loginEmployees = async (req: Request, res: Response) => {
 
         const user = await UserService.findByEmail(email);
 
-        if(user && UserService.matchPassword(password, user.password)) {
-            const token = generateToken({id: user.id})
-            res.json({ status: true, token });
-            return;
+        if(user) {
+            const userPassword = await UserService.matchPassword(password, user.password)
+            if(userPassword){
+                const token = generateToken({id: user.id})
+                res.json({ status: true, token});
+                return;
+            }
         }
     }
-
     res.json({ status: false });
 };

@@ -4,7 +4,7 @@ import * as EmployeesService from './EmployeesService';
 describe('testing employees service', () => {
 
     let email = 'teste@jest.com';
-    let password = '1234';
+    let password = '8080';
 
     beforeAll(async () => {
         await UserEmployees.sync({ force: true })
