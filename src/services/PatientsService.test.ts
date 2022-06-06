@@ -53,5 +53,11 @@ describe('testing patients service', () => {
         expect(updateUser).not.toBeInstanceOf(Error)
         expect(updateUser).not.toBeNull()
     });
+
+    it('should delete this patients', async () => {
+        const deleteUser = await PatientsService.deletePatient(id) 
+        expect(deleteUser).toBeTruthy()
+        expect(deleteUser)
+    });
     
 });

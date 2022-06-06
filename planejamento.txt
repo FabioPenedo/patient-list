@@ -9,11 +9,11 @@ Desafio
 
 - Cada Paciente terá 3 estágios: Cancelado, Renunciado, Ativo - OK
 
-- Criar Filtro de Status dos Pacientes e Valor Total de Pacientes Cadastrados
+- Criar Filtro de Status dos Pacientes e Valor Total de Pacientes Cadastrados - PROXIMO
 
 - Criar Filtro Data de Evolução de Paciente
 
-- Criar Validação na Rota de DELETE, para apenas o "User Master" deletar pacientes - PROXIMO
+- Criar Validação na Rota de DELETE, para apenas o "User Master" deletar pacientes - OK
 
 _________________________________________________________________________________
 

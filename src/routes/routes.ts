@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { privateRoute } from '../config/passport';
+import { privateRouteMaster, privateRouteOrdinary } from '../config/passport';
 
 import * as EmployeesController from '../controllers/employeesController';
 
@@ -10,13 +10,15 @@ const router = Router();
 router.post('/register/employees', EmployeesController.registerEmployees);
 router.post('/login/employees', EmployeesController.loginEmployees);
 
-router.post('/register/patients', privateRoute, PatientsController.createPatients)
+router.post('/register/patients', privateRouteOrdinary, PatientsController.createPatients)
 
-router.get('/list/patients', privateRoute, PatientsController.listPatients)
-router.get('/list/patients/:id', privateRoute, PatientsController.patientX)
+router.get('/list/patients', privateRouteOrdinary, PatientsController.listPatients)
+router.get('/list/patients/:id', privateRouteOrdinary, PatientsController.patientX)
 
 
-router.put('/update/:id/patients', privateRoute, PatientsController.updatePatients) 
+router.put('/update/:id/patients', privateRouteOrdinary, PatientsController.updatePatients)
+
+router.delete('/delete/:id/patients', privateRouteMaster, PatientsController.deletePatients)
 
 
 export default router;

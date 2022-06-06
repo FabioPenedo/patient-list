@@ -22,18 +22,18 @@ export const createPatients = async (req: Request, res: Response) => {
     }
 
     res.json({ error: 'Dados do paciente não enviados.' });
-}
+};
 
 export const listPatients = async (req: Request, res: Response) => {
     let users = await PatientService.all()
     res.json({ users });
-}
+};
 
 export const patientX = async (req: Request, res: Response) => {
     let id = parseInt( req.params.id )
     let users = await PatientService.thisPatient( id )
     res.json({ users });
-}
+};
 
 export const updatePatients = async (req: Request, res: Response) => {
     let id = parseInt( req.params.id )
@@ -64,6 +64,11 @@ export const updatePatients = async (req: Request, res: Response) => {
         }
     } else {
         res.json({ users: null })
-    }
-     
+    }  
+};
+
+export const deletePatients = async (req: Request, res: Response) => {
+    let id = parseInt(req.params.id)
+    await PatientService.deletePatient(id)
+    res.json({ user: true })
 }

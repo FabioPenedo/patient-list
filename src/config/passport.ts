@@ -27,10 +27,24 @@ export const decodeToken = (token: string) => {
     return jwt.decode(token) as JwtPayload
 }
 
-export const privateRoute = (req: Request, res: Response, next: NextFunction) => {
+export const privateRouteOrdinary = (req: Request, res: Response, next: NextFunction) => {
     const authFunction = passport.authenticate('jwt', (err, user) => {
         req.user = user
         return user ? next() : next(notAuthorizedJson)
+    });
+    authFunction(req, res, next)
+}
+
+export const privateRouteMaster = (req: Request, res: Response, next: NextFunction) => {
+    const authFunction = passport.authenticate('jwt', (err, user) => {
+        req.user = user
+        if(user.usertype === 'master') {
+            next()
+            return;
+        } else {
+            next(notAuthorizedJson)
+            return;
+        }
     });
     authFunction(req, res, next)
 }
