@@ -1,4 +1,5 @@
 import { UserInstance, UserPatients } from '../models/Patients';
+import { Op } from 'sequelize';
 
 export const registerPatient = async (patient: string, gender: string, clinic: string, age: string, city: string, cpf: string, rg: string, cep: string, status: string) => {
     const hasUser = await UserPatients.findOne({where: { cpf } });
@@ -48,4 +49,20 @@ export const updateThisPatient = async (id: number, patient: string, gender: str
 
 export const deletePatient = async (id: number) => {
     return await UserPatients.destroy({where: { id }});   
+};
+
+export const findPatientsStatus = async (status: string) => {
+    return await UserPatients.findAll({
+        where: { status }
+    })
+};
+
+export const findPatient = async (patient: string) => {
+    return await UserPatients.findAll({
+        where: {
+            patient: {
+                [Op.like]: `${patient}%`
+            }
+        }
+    });
 };

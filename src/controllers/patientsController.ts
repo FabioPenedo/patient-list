@@ -71,4 +71,18 @@ export const deletePatients = async (req: Request, res: Response) => {
     let id = parseInt(req.params.id)
     await PatientService.deletePatient(id)
     res.json({ user: true })
-}
+};
+
+export const statusFilter = async (req: Request, res: Response) => {
+    let status = req.params.status
+    let user = await PatientService.findPatientsStatus(status)
+    res.json({ user })
+};
+
+export const patientFilter = async (req: Request, res: Response) => {
+    let patient = req.params.patient
+    let user = await PatientService.findPatientsStatus(patient)
+    res.json({ user })
+};
+
+
