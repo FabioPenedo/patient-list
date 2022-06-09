@@ -57,7 +57,16 @@ describe('testing patients service', () => {
     it('should delete this patients', async () => {
         const deleteUser = await PatientsService.deletePatient(id) 
         expect(deleteUser).toBeTruthy()
-        expect(deleteUser)
+    });
+
+    it('should list patients by status', async () => {
+        const user = await PatientsService.findPatientsStatus(status)
+        expect(user).not.toBeNull()
+    });
+
+    it('should list patients by patient name', async () => {
+        const user = await PatientsService.findPatient(patient)
+        expect(user).not.toBeNull()
     });
     
 });

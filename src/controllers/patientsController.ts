@@ -81,7 +81,7 @@ export const statusFilter = async (req: Request, res: Response) => {
 
 export const patientFilter = async (req: Request, res: Response) => {
     let patient = req.params.patient
-    let user = await PatientService.findPatientsStatus(patient)
+    let user = await PatientService.findPatient(patient)
     res.json({ user })
 };
 

@@ -13,13 +13,10 @@ router.post('/login/employees', EmployeesController.loginEmployees);
 router.get('/list/patients', privateRouteOrdinary, PatientsController.listPatients)
 router.get('/list/patients/:id', privateRouteOrdinary, PatientsController.patientX)
 router.get('/filter/patients/:status', privateRouteOrdinary, PatientsController.statusFilter)
-router.get('/filter/teste/:patient', privateRouteOrdinary, PatientsController.patientFilter)
+router.get('/filter/:patient', privateRouteOrdinary, PatientsController.patientFilter)
 
 router.post('/register/patients', privateRouteOrdinary, PatientsController.createPatients)
 router.put('/update/:id/patients', privateRouteOrdinary, PatientsController.updatePatients)
 router.delete('/delete/:id/patients', privateRouteMaster, PatientsController.deletePatients)
-
-
-
 
 export default router;
