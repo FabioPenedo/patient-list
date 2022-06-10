@@ -1,5 +1,7 @@
 import { UserPatients, UserInstance } from '../models/Patients';
+import { StatusHistory } from '../models/StatusHistory';
 import * as PatientsService from './PatientsService';
+import * as StatusHistoryService from './StatusHistoryService';
 
 describe('testing patients service', () => {
 
@@ -67,6 +69,23 @@ describe('testing patients service', () => {
     it('should list patients by patient name', async () => {
         const user = await PatientsService.findPatient(patient)
         expect(user).not.toBeNull()
-    });
-    
+    }); 
 });
+
+describe('testing patients service datatime', () => {
+    let datatime = '09'
+
+    beforeAll(async () => {
+        await StatusHistory.sync({ force: true })
+    });
+
+    it('should list patients by datatime', async () => {
+        const user = await StatusHistoryService.findDataTime(datatime)
+        expect(user).not.toBeNull()
+    });
+
+});
+
+
+
+

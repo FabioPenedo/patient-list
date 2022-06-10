@@ -1,5 +1,5 @@
 import { UserInstance, StatusHistory } from '../models/StatusHistory';
-import { UserPatients } from '../models/Patients';
+import { Op } from 'sequelize';
 
 export const employeeRegistration = async (employeeId: number, patientId: number, previousStatus: string, currentStatus: string, dataTime: string) => {
     await StatusHistory.create({
@@ -8,5 +8,15 @@ export const employeeRegistration = async (employeeId: number, patientId: number
         previousstatus: previousStatus,
         currentstatus: currentStatus,
         datatime: dataTime
+    });
+}
+
+export const findDataTime = async (datatime: string) => {
+    return await StatusHistory.findAll({
+        where: {
+            datatime: {
+                [Op.like]: `${datatime}%`
+            }
+        }
     });
 }

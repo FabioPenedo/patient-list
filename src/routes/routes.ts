@@ -14,6 +14,7 @@ router.get('/list/patients', privateRouteOrdinary, PatientsController.listPatien
 router.get('/list/patients/:id', privateRouteOrdinary, PatientsController.patientX)
 router.get('/filter/patients/:status', privateRouteOrdinary, PatientsController.statusFilter)
 router.get('/filter/:patient', privateRouteOrdinary, PatientsController.patientFilter)
+router.get('/filter/datatime/:datatime', privateRouteOrdinary, PatientsController.dataTimeFilter)
 
 router.post('/register/patients', privateRouteOrdinary, PatientsController.createPatients)
 router.put('/update/:id/patients', privateRouteOrdinary, PatientsController.updatePatients)

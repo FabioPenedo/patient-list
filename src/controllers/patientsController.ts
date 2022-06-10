@@ -27,6 +27,15 @@ export const createPatients = async (req: Request, res: Response) => {
 export const listPatients = async (req: Request, res: Response) => {
     let users = await PatientService.all()
     res.json({ users });
+    const now = new Date()
+    let day = now.getDate()
+    let month = now.getMonth()
+    let year = now.getFullYear().toString().slice(-2)
+    let hour = now.getHours()
+    let minutes = now.getMinutes()
+    let dmy = `0${day}-0${month}-${year} ${hour}:${minutes}`
+
+    console.log(dmy)
 };
 
 export const patientX = async (req: Request, res: Response) => {
@@ -56,9 +65,15 @@ export const updatePatients = async (req: Request, res: Response) => {
                 let patientId =  user.id
                 previousStatus = patientX.status
                 let currentStatus = user.status
-                let now = new Date()
-                let dataTime = now.toLocaleString() 
-    
+
+                const now = new Date()
+                let day = now.getDate()
+                let month = now.getMonth()
+                let year = now.getFullYear().toString().slice(-2)
+                let hour = now.getHours()
+                let minutes = now.getMinutes()
+                let dataTime = `0${day}-0${month}-${year} ${hour}:${minutes}`
+                
                 await StatusHistory.employeeRegistration(employeeId, patientId, previousStatus, currentStatus, dataTime)
             }
         }
@@ -82,6 +97,12 @@ export const statusFilter = async (req: Request, res: Response) => {
 export const patientFilter = async (req: Request, res: Response) => {
     let patient = req.params.patient
     let user = await PatientService.findPatient(patient)
+    res.json({ user })
+};
+
+export const dataTimeFilter = async (req: Request, res: Response) => {
+    let datatime = req.params.datatime
+    let user = await StatusHistory.findDataTime(datatime)
     res.json({ user })
 };
 
