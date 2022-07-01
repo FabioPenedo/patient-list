@@ -27,15 +27,6 @@ export const createPatients = async (req: Request, res: Response) => {
 export const listPatients = async (req: Request, res: Response) => {
     let users = await PatientService.all()
     res.json({ users });
-    const now = new Date()
-    let day = now.getDate()
-    let month = now.getMonth()
-    let year = now.getFullYear().toString().slice(-2)
-    let hour = now.getHours()
-    let minutes = now.getMinutes()
-    let dmy = `0${day}-0${month}-${year} ${hour}:${minutes}`
-
-    console.log(dmy)
 };
 
 export const patientX = async (req: Request, res: Response) => {
