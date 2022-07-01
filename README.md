@@ -21,7 +21,6 @@ Sistema de funcionários e pacientes para hospitais.
 
 + NodeJs(Express)
 + TypeScript
-+ JavaScript
 + PostgreSQL
 + JWT
 + Jest
